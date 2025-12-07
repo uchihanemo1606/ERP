@@ -1,24 +1,29 @@
-﻿namespace ERP.Models
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace ERP.Models
 {
-    public class User
+    public class User : IdentityUser
     {
-        public Guid Id { get; set; } = Guid.NewGuid();
-        public required string FullName { get; set; }
-        public required string Email { get; set; }
-        public string? EmailConfirmed { get; set; }
-        public required string PhoneNumber { get; set; }
-        public required string Educational { get; set; }
-        public required string Address { get; set; }
-        public required string BasicSalary { get; set; } // lương cơ bảng
-        public required string Allowance { get; set; } // phụ cấp
-        public required string Insurance { get; set; } // bảo hiểm
-        public required DateOnly StartDate { get; set; }
-        public required DateOnly EndDate { get; set; }
+        public string EmployeeId { get; set; } = null!;
+        public string FullName { get; set; } = null!;
+        public DateTime Birthday { get; set; }
+        public string Avatar { get; set; } = "defaultavatar.png";
+        public  string Educational { get; set; } = null!; // trình độ học vấn
+        public string Address { get; set; } = null!; // địa chỉ
+        public string BasicSalary { get; set; } = null!; // lương cơ bảng
+        public string Allowance { get; set; } = null!; // phụ cấp
+        public string Insurance { get; set; } = null!; // bảo hiểm
+
+        public DateOnly StartDate { get; set; } // ngày bắt đầu làm việc
+        public DateOnly EndDate { get; set; } // ngày kết thúc làm việc
+
+        public bool IsActive { get; set; } = true;
 
         //Department
         public Guid DepartmentId { get; set; }
-        public required Department Department { get; set; } 
+        public Department Department { get; set; } = null!;
 
-
+        //Refresh Token 
+        public List<RefreshToken> refreshTokens = [];
     }
 }
