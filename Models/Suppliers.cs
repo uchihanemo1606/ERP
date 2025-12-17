@@ -2,47 +2,32 @@
 
 namespace ERP.Models
 {
-    public class Suppliers
+    public class Suppliers : AuditableEntity
     {
         public Guid Id { get; set; } = Guid.NewGuid();
 
-        [Required, MaxLength(50)]
-        public string Code { get; set; } = null!;           // NCC-000123
+        public string Code { get; set; } = null!;                    // NCC-000123 
+        public string Name { get; set; } = null!;                    // Tên công ty 
+        public string? TaxCode { get; set; }                         // Mã số thuế 
+        public string? Website { get; set; }                         // Thêm: Website công ty (hữu ích khi tra cứu)
 
-        [Required, MaxLength(300)]
-        public string Name { get; set; } = null!;           // Tên công ty / cá nhân
+        // === Công nợ & Điều khoản thanh toán (rất quan trọng cho mua hàng) ===
+        public decimal CreditLimit { get; set; } = 0;                // Hạn mức công nợ tối đa 
+        public int PaymentTermDays { get; set; } = 30;               // Số ngày được nợ (30, 45, 60...) 
+        public string PaymentTermDescription { get; set; } = "Net 30"; // Mô tả rõ hơn: "Net 30", "COD", "T/T 15 days" 
 
-        [MaxLength(300)]
-        public string? ContactPerson { get; set; }          // Người liên hệ chính
-
-        [MaxLength(20)]
-        public string? Phone { get; set; }                  // SĐT chính
-
-        [MaxLength(20)]
-        public string? Phone2 { get; set; }                 // SĐT phụ
-
-        [MaxLength(256)]
-        public string? Email { get; set; }
-
-        [MaxLength(50)]
-        public string? TaxCode { get; set; }                // Mã số thuế (bắt buộc nếu xuất hóa đơn đỏ)
-
-        [MaxLength(500)]
-        public string? Address { get; set; }                // Địa chỉ trụ sở
-
-        public string? Website { get; set; }
-
-        // Công nợ & điều khoản thanh toán – CỰC KỲ QUAN TRỌNG
-        public decimal CreditLimit { get; set; } = 0;       // Hạn mức công nợ được phép (VD: 500 triệu)
-        public int PaymentTermDays { get; set; } = 30;      // Công nợ trả trong bao nhiêu ngày (30, 45, 60…)
-        public decimal CurrentDebt { get; set; } = 0;       // Công nợ hiện tại (tính realtime)
-
-        // Ngân hàng (rất hay dùng khi chuyển khoản)
+        // === Thông tin ngân hàng (rất hay dùng) ===
         public string? BankName { get; set; }
         public string? BankAccountNumber { get; set; }
         public string? BankAccountName { get; set; }
 
-        public bool IsActive { get; set; } = true;          // Còn giao dịch không
-        public string? Note { get; set; }
+        public string? CurrencyCode { get; set; } = "VND";           
+        public string? Notes { get; set; }                           // Ghi chú
+
+
+        public List<SupplierAddress> SupplierAddresses { get; set; } = [];
+        public List<SupplierContacts> SupplierContacts { get; set; } = [];
+
+
     }
 }

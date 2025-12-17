@@ -14,7 +14,7 @@ namespace ERP.Models
         public string Allowance { get; set; } = null!; // phụ cấp
         public string Insurance { get; set; } = null!; // bảo hiểm
 
-        public DateOnly StartDate { get; set; } // ngày bắt đầu làm việc
+        public DateOnly StartDate { get; set; }  // ngày bắt đầu làm việc
         public DateOnly EndDate { get; set; } // ngày kết thúc làm việc
 
         public bool IsActive { get; set; } = true;
@@ -24,6 +24,6 @@ namespace ERP.Models
         public Department Department { get; set; } = null!;
 
         //Refresh Token 
-        public List<RefreshToken> refreshTokens = [];
+        public List<RefreshTokenUser> refreshTokenUsers = [];
     }
 }
