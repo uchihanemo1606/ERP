@@ -1,4 +1,5 @@
-﻿namespace ERP.Models
+﻿using System;
+namespace ERP.Models
 {
     public class GoodsReceipt
     {
@@ -19,7 +20,7 @@
 
         public string? Notes { get; set; }
 
-        public List<GoodsReceiptDetail> GoodsReceiptDetails { get; set; } = [];
+        public ICollection<GoodsReceiptDetail> GoodsReceiptDetails { get; set; } = [];
 
 
     }

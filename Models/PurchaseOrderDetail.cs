@@ -1,4 +1,5 @@
-﻿namespace ERP.Models
+﻿using System;
+namespace ERP.Models
 {
     public class PurchaseOrderDetail
     {

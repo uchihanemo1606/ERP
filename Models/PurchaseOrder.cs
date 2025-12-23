@@ -1,4 +1,5 @@
-﻿namespace ERP.Models
+﻿using System;
+namespace ERP.Models
 {
     public class PurchaseOrder
     {
@@ -25,7 +26,8 @@
         public string? Notes { get; set; }
 
 
-
+        public ICollection<PurchaseOrderDetail> PurchaseOrderDetails { get; set; } = [];
+        public ICollection<GoodsReceipt> GoodsReceipts { get; set; } = [];
 
     }
 }

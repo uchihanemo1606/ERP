@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System;
+
+using Microsoft.AspNetCore.Identity;
 
 namespace ERP.Models
 {
@@ -23,6 +25,8 @@ namespace ERP.Models
         public Guid DepartmentId { get; set; }
         public Department Department { get; set; } = null!;
 
+        //Warehouse
+        public Warehouse? ManagedWarehouse { get; set; }
         //Refresh Token 
         public List<RefreshTokenUser> refreshTokenUsers = [];
     }

@@ -1,4 +1,5 @@
-﻿namespace ERP.Models
+﻿using System;
+namespace ERP.Models
 {
     public class Order
     {
@@ -24,7 +25,7 @@
         public string? ShippingAddress { get; set; }
 
         // Navigation
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; } = [];
+        public ICollection<OrderDetail> OrderDetails { get; set; } = [];
 
     }
 }

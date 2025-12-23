@@ -1,4 +1,5 @@
-﻿namespace ERP.Models
+﻿using System;
+namespace ERP.Models
 {
     public class RolePermission : AuditableEntity
     {
@@ -7,6 +8,7 @@
         public Role Role { get; set; } = null!;
         public Guid PermissionId { get; set; }
         public Permission Permission { get; set; } = null!;
+
 
     }
 }

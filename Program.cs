@@ -1,9 +1,10 @@
 using ERP.Data;
+using ERP.Models;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using Microsoft.AspNetCore.Builder;
-using Npgsql.EntityFrameworkCore.PostgreSQL;
 
 
 
@@ -15,11 +16,14 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddIdentity<User, IdentityRole>()  // Không c?n Guid
+    .AddEntityFrameworkStores<AppDbContext>()
+    .AddDefaultTokenProviders();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgSql(connectionString, ServerVersion.AutoDetect(connectionString))
+    options.UseNpgsql(connectionString)
 );
 
 var app = builder.Build();

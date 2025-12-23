@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System;
 
 namespace ERP.Models
 {
@@ -25,8 +26,8 @@ namespace ERP.Models
         public string? Notes { get; set; }                           // Ghi chú
 
 
-        public List<SupplierAddress> SupplierAddresses { get; set; } = [];
-        public List<SupplierContacts> SupplierContacts { get; set; } = [];
+        public ICollection<SupplierAddress> SupplierAddresses { get; set; } = [];
+        public ICollection<SupplierContacts> SupplierContacts { get; set; } = [];
 
 
     }

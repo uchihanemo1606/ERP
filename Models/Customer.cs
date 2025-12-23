@@ -1,5 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
-
+﻿
+using System;
+using Microsoft.AspNetCore.Identity;
 namespace ERP.Models
 {
     public class Customer : IdentityUser
@@ -11,9 +12,9 @@ namespace ERP.Models
         public bool IsActive { get; set; } = true;
 
         // Navigation
-        public List<Address> Addresses { get; set; } = [];
-        public List<Order> Orders { get; set; } = [];
-        public List<RefreshToken> RefreshTokens { get; set; } = [];
+        public ICollection<Address> Addresses { get; set; } = [];
+        public ICollection<Order> Orders { get; set; } = [];
+        public ICollection<RefreshTokenCustomer> RefreshTokenCustomers { get; set; } = [];
 
 
     }

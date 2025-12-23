@@ -1,4 +1,6 @@
-﻿namespace ERP.Models
+﻿using System;
+
+namespace ERP.Models
 {
     public class GoodsReceiptDetail
     {
@@ -20,5 +22,8 @@
         public DateTime? ExpiryDate { get; set; }
 
         public string? Notes { get; set; }
+
+        public ICollection<Product> Products { get; set; } = [ ];
+
     }
 }
