@@ -12,9 +12,9 @@ namespace ERP.Models
         public string Avatar { get; set; } = "defaultavatar.png";
         public  string Educational { get; set; } = null!; // trình độ học vấn
         public string Address { get; set; } = null!; // địa chỉ
-        public string BasicSalary { get; set; } = null!; // lương cơ bảng
-        public string Allowance { get; set; } = null!; // phụ cấp
-        public string Insurance { get; set; } = null!; // bảo hiểm
+        public decimal BasicSalary { get; set; } 
+        public decimal Allowance { get; set; }
+        public decimal Insurance { get; set; } 
 
         public DateOnly StartDate { get; set; }  // ngày bắt đầu làm việc
         public DateOnly EndDate { get; set; } // ngày kết thúc làm việc
