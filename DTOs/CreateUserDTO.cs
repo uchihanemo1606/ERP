@@ -5,6 +5,9 @@ namespace ERP.DTOs
     public class CreateUserDTO
     {
 
+
+
+
         [Required(ErrorMessage = "Tên đăng nhập là bắt buộc")]
         [StringLength(50, MinimumLength = 3)]
         public string Username { get; set; } = null!;
